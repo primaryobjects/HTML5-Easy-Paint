@@ -8,8 +8,14 @@ HTML5 Easy Paint uses continuous draw! Just move the mouse around
 the screen to draw. Additional features include a basic selection
 of colors, fill tool, and image stamps.
 
+View an online demo at:
+http://www.primaryobjects.com/paint
 
-Copyright © 2011 Kory Becker (http://www.primaryobjects.com)
+View the HTML5 Easy Paint wiki at:
+https://github.com/primaryobjects/HTML5-Easy-Paint/wiki
+
+
+Copyright ï¿½ 2011 Kory Becker (http://www.primaryobjects.com)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
