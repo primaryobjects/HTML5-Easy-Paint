@@ -1,3 +1,13 @@
+About
+-----
+
+This started as an example with using HTML5 and turned into
+an easy paint program, perfect for children. While traditional
+paint programs require holding down the mouse button to draw,
+HTML5 Easy Paint uses continuous draw! Just move the mouse around
+the screen to draw. Also includes image stamps.
+
+
 Copyright © 2011 Kory Becker (http://www.primaryobjects.com)
 
 Permission is hereby granted, free of charge, to any person obtaining
