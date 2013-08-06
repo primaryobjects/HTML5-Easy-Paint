@@ -3,6 +3,7 @@ var canvas, context;
 var stampId = '';
 var lastColor = 'black';
 var lastStampId = '';
+var enableDraw = false;
 
 function init() {
 	canvas = $('#imageView').get(0);
@@ -15,6 +16,8 @@ function init() {
 	//$('#container').get(0).addEventListener('mousemove', onMouseMove, false);
 	canvas.addEventListener('mousemove', onMouseMove, false);
 	canvas.addEventListener('click', onClick, false);
+	canvas.addEventListener('mousedown', function(e) { enableDraw = true; }, false); 
+	canvas.addEventListener('mouseup', function(e) { enableDraw = false; started = false; }, false); 
 	
 	// Add events for toolbar buttons.
 	$('#red').get(0).addEventListener('click', function(e) { onColorClick(e.target.id); }, false);
@@ -52,17 +55,19 @@ function onMouseMove(ev) {
 		y = ev.offsetY - 5;
 	}
 	
-	if (!started) {
-		started = true;
+	if (enableDraw && stampId.length == 0) {
+		if (!started) {
+			started = true;
 
-		context.beginPath();
-		context.moveTo(x, y);		
+			context.beginPath();
+			context.moveTo(x, y);		
+		}
+		else {
+			context.lineTo(x, y);
+			context.stroke();
+		}
 	}
-	else {
-		context.lineTo(x, y);
-		context.stroke();
-	}
-	
+
 	$('#stats').text(x + ', ' + y);
 }
 
@@ -91,6 +96,10 @@ function onColorClick(color) {
 	
 	// Store color so we can un-highlight it next time around.
 	lastColor = color;
+	
+	// Turn off any stamp selection, since we're painting again.
+	$(stampId).css("border", "0px dashed white");
+	stampId = '';
 }
 
 function onFill() {
@@ -108,7 +117,9 @@ function onStamp(id) {
 	
 	$(lastStampId).css("border", "0px dashed white");
 	$(stampId).css("border", "1px dashed black");
-	
+
+	$('#' + lastColor).css("border", "0px dashed white");
+
 	// Store stamp so we can un-highlight it next time around.
 	lastStampId = stampId;	
 }
