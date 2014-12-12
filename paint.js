@@ -114,7 +114,12 @@ function onFill() {
 function onStamp(id) {
 	// Update the stamp image.
 	stampId = '#' + id;
-	
+
+    if (lastStampId == stampId) {
+        // User clicked the selected stamp again, so deselect it.
+        stampId = '';
+    }
+
 	$(lastStampId).css("border", "0px dashed white");
 	$(stampId).css("border", "1px dashed black");
 
